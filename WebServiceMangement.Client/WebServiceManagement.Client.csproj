@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Version>1.0</Version>
+		<Description>Client of WebServiceManagement</Description>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\WebServiceManagement.Utils\WebServiceManagement.Utils.csproj" />
+	</ItemGroup>
+
+</Project>
