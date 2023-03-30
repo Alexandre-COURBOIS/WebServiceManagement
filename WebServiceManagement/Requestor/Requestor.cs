@@ -11,5 +11,6 @@ namespace WebServiceManagement.Requestor
     public abstract class Requestor : IRequestor
     {
         abstract public Task<List<AgencyEntity>> getAgencies();
+        abstract public Task<AgencyEntity> getAgency(int agencyId);
     }
 }

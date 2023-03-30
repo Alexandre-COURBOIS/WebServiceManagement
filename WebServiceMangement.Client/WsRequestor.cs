@@ -21,13 +21,19 @@ namespace WebServiceMangement.Client
 
         public override async Task<List<AgencyEntity>> getAgencies()
         {
-            var responseMessage =  await _httpClient.SendAsync(_generator.generateRequestToGetAgencies());
-            var content = await responseMessage.Content.ReadAsStringAsync();
+            HttpResponseMessage responseMessage =  await _httpClient.SendAsync(_generator.GenerateRequestToGetAgencies());
+            String content = await responseMessage.Content.ReadAsStringAsync();
 
-            List<AgencyEntity> AgencyList = _mapper.MapList(content);
-
-            return AgencyList;
+            return _mapper.MapList(content);
         }
 
+        public override async Task<AgencyEntity> getAgency(int agencyId)
+        {
+            HttpResponseMessage responseMessage =  await _httpClient.SendAsync(_generator.GenerateRequestToGetAgency(agencyId));
+
+            String content = await responseMessage.Content.ReadAsStringAsync();
+            
+            return _mapper.Map(content);
+        }
     }
 }

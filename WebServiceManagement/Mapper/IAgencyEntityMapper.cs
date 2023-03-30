@@ -9,7 +9,7 @@ namespace WebServiceManagement.Core.Mapper
 {
     public interface IAgencyEntityMapper
     {
-        public AgencyEntity MapSingle(string jsonResponse);
+        public AgencyEntity Map(string jsonResponse);
 
         public List<AgencyEntity> MapList(string jsonResponse);
     }

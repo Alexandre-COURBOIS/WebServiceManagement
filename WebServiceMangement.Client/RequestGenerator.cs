@@ -15,9 +15,14 @@ namespace WebServiceMangement.Client
             _httpClient = httpClient;
         }
 
-        public HttpRequestMessage generateRequestToGetAgencies()
+        public HttpRequestMessage GenerateRequestToGetAgencies()
         {
             return _httpRequestFactory.RequesterDefault(HttpMethod.Get, URI_DRIVE_REQUEST + "/agencies", null);
+        }
+        
+        public HttpRequestMessage GenerateRequestToGetAgency(int agencyId)
+        {
+            return _httpRequestFactory.RequesterDefault(HttpMethod.Get, URI_DRIVE_REQUEST + "/agency/" + agencyId, null);
         }
     }
 }

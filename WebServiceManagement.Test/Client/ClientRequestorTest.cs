@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using WebServiceManagement.Core.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,5 +39,17 @@ namespace WebServiceManagement.Test.Client
             
             Assert.IsNotNull(agencyEntities);
         }
+        
+        [TestMethod]
+        public async Task TestGetAgency()
+        {
+            Random random = new Random();
+            
+            AgencyEntity agency = await _clientRequestor.getAgency(random.Next(1, 21));
+            
+            Assert.IsNotNull(agency);
+        }
+        
+        
     }
 }

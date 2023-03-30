@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
+
 using WebServiceManagement.Client.Entity;
 using WebServiceManagement.Core.Entity;
 using WebServiceManagement.Core.Mapper;
@@ -13,14 +8,16 @@ namespace WebServiceManagement.Client.Mapper
 {
     public class ClientAgencyEntityMapper : IAgencyEntityMapper<IAgencyType>
     {
-        public AgencyEntity MapSingle(string jsonResponse)
+        public AgencyEntity Map(string jsonResponse)
         {
-            JsonElement json = JsonDocument.Parse(jsonResponse).RootElement;
+            JsonDocument jsonArray = JsonDocument.Parse(jsonResponse);
 
-            ClientAgencyEntity agencyEntity = JsonSerializer.Deserialize<ClientAgencyEntity>(json);
-
+            JsonElement json = jsonArray.RootElement[0];
+            
+            ClientAgencyEntity agencyEntity = JsonSerializer.Deserialize<ClientAgencyEntity>(json.ToString());
+            
             setEntityFields(agencyEntity, json);
-
+            
             return agencyEntity;
         }
 
@@ -63,9 +60,9 @@ namespace WebServiceManagement.Client.Mapper
 
         private void setEntityFields(ClientAgencyEntity agencyEntity, JsonElement json)
         {
-
-            //TODO
-
+            agencyEntity.Id = json.GetProperty("id").ToString();
+            agencyEntity.Code = json.GetProperty("code").ToString();
+            agencyEntity.Libelle = json.GetProperty("libelle").ToString();
         }
     }
 }

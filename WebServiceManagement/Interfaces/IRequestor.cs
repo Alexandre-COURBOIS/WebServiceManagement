@@ -10,5 +10,7 @@ namespace WebServiceManagement.Core.Interfaces
     public interface IRequestor
     {
         Task<List<AgencyEntity>> getAgencies();
+        
+        Task<AgencyEntity> getAgency(int agencyId);
     }
 }
